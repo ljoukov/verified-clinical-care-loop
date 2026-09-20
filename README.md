@@ -4,6 +4,10 @@ A working local demo of a clinical workflow with a separate specification,
 editable Python-like code, explicit proof certificates and an independent
 Metamath-inspired checker. Only verified programs can run through the HTTP API.
 
+## Demo
+
+[Slides](https://docs.google.com/presentation/d/1tLyyz6uaH00Wjc5hpzfXpDGVWXmsT54yzBJYfM3UCCI/edit?usp=sharing)
+
 ## Run
 
 Python 3.10 or later; no third-party packages are required.
