@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.env
+.env.*
+.DS_Store
+.browser-checks/
+*.log
+
+# Local presentation builds and generated artifacts
+/.slide-build/
+/output/

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#163b32">
+  <title>Verified Clinical Care Loop</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#workspace" aria-label="Verified Clinical Care Loop home">
+      <svg class="brand-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M18 3a15 15 0 1 0 15 15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="m25 5 4 4 6-7M18 11v14m-7-7h14" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>VerifiedCare<span class="brand-sub">CLINICAL CARE LOOP</span></span>
+    </a>
+    <div class="nav-label">WORKSPACE</div>
+    <nav class="side-nav" aria-label="Main navigation">
+      <button class="nav-item active" data-view="workspace"><span data-icon="activity"></span><span>Care workspace</span></button>
+      <button class="nav-item" data-view="proof"><span data-icon="code"></span><span>Protocol & proof</span></button>
+      <button class="nav-item" data-view="requirements"><span data-icon="shield"></span><span>Requirements</span></button>
+    </nav>
+    <div class="sidebar-case"><span class="nav-label">ACTIVE CASE</span><div class="sidebar-patient"><span class="mini-avatar">D</span><span>David, 66<small>Post-discharge follow-up</small></span><i class="status-dot"></i></div></div>
+    <div class="sidebar-bottom">
+      <div class="sidebar-quote">Intelligence proposes.<br>Proof earns trust.</div>
+      <button class="nav-item" id="about-button"><span data-icon="book"></span><span>About this demo</span></button>
+      <div class="demo-tag"><span class="status-dot"></span> Sandbox · no clinical actions</div>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="breadcrumbs"><span class="mobile-brand">VerifiedCare / </span>Patient workflows <span>/</span> <strong>David’s care loop</strong></div>
+      <div class="topbar-right"><span class="tag muted">Case-inspired simulation</span><span class="user-avatar" title="Demo care coordinator">CC</span></div>
+    </header>
+    <nav class="mobile-nav" aria-label="Mobile navigation"><button class="active" data-view="workspace">Care</button><button data-view="proof">Code & proof</button><button data-view="requirements">Requirements</button></nav>
+    <main class="main">
+      <div id="connection-error" class="notice error-notice" hidden role="alert"></div>
+      <section class="view active" id="view-workspace" aria-label="Care workspace">
+        <div class="page-heading"><div><div class="eyebrow"><span class="status-dot"></span> THE HANDOFF IS NOT THE FINISH LINE</div><h1>Close the loop. Prove every step.</h1><p class="subheading">Follow one patient from a pending result to a verified resolution.</p></div><div class="heading-actions"><button class="btn secondary" id="reset-button"><span data-icon="reset"></span>Reset</button><button class="btn primary" id="play-button"><span data-icon="play"></span>Play patient story</button></div></div>
+        <div class="summary-grid">
+          <article class="card patient-card">
+            <div class="patient-top"><div class="patient-avatar">D<span></span></div><div class="patient-heading"><div class="eyebrow">PATIENT · DAVID-66</div><h2>David <span>66 years · Male</span></h2><p>Acute confusion · Urinary tract infection</p></div><span class="tag warning" id="patient-status">Follow-up required</span></div>
+            <div class="patient-meta"><div><div class="meta-label">Current setting</div><div class="meta-value" id="setting">Discharged home</div></div><div><div class="meta-label">Discharge treatment</div><div class="meta-value">TMP-SMX</div></div><div><div class="meta-label">Tracked result</div><div class="meta-value">Urine culture C17</div></div><div><div class="meta-label">Workflow owner</div><div class="meta-value">Care coordinator</div></div></div>
+          </article>
+          <article class="card verification-card" id="verification-card">
+            <div class="verification-icon" data-icon="shield"></div><div><div class="eyebrow">INDEPENDENT VERIFICATION</div><h2 class="verification-title" id="gate-title">Checking the protocol…</h2><p class="verification-copy" id="gate-copy">The code must satisfy the separate specification before it can run.</p></div>
+            <div class="verification-footer"><span class="mono" id="gate-hash">CODE + SPEC + CERTIFICATE</span><button class="text-button" data-view="proof">Inspect proof <span>↗</span></button></div>
+          </article>
+        </div>
+        <div class="care-grid">
+          <article class="card timeline-card"><div class="card-header"><div><h2 class="section-title">The patient journey</h2><p class="section-caption">A real failure pattern. A different way forward.</p></div><span class="tag muted" id="timeline-count">03 / 08</span></div><div class="timeline-list" id="timeline-list"></div><div class="timeline-footer"><span id="event-origin">Case-inspired event</span><button class="btn secondary small" id="next-button">Next event <span data-icon="arrow"></span></button></div></article>
+          <article class="card decision-card"><div class="card-header"><div class="decision-eyebrow"><span class="status-dot"></span> VERIFIED WORKFLOW</div><span class="tag green" id="result-version">C17 · v1</span></div><div class="card-body"><h2 class="decision-title" id="decision-title">A result needs a response.</h2><p class="decision-copy" id="decision-copy"></p><div class="event-narrative" id="event-narrative"></div><div class="evidence-list" id="evidence-list"></div><div class="action-box" id="action-box"><div class="meta-label">NEXT PERMITTED ACTION</div><div class="action-name" id="action-name">Verifying…</div><p class="action-detail" id="action-detail">Checking the complete program, not just this event.</p></div><div class="notice" id="runtime-note">All actions are simulated. The treating clinician chooses the treatment.</div></div></article>
+        </div>
+        <article class="card comparison-card"><div class="comparison-grid"><div class="comparison-column"><span class="comparison-label">THE ORIGINAL FAILURE</span><h3>The result arrived. The care did not change.</h3><p class="comparison-text">In the published case, the resistant culture was missed after discharge. The patient later returned with severe sepsis.</p></div><div class="comparison-column"><span class="comparison-label green-text">THE VERIFIED CARE LOOP</span><h3>A result creates an obligation.</h3><p class="comparison-text">The workflow requires a current treatment decision, confirmed family instructions, and access to treatment before closing.</p></div></div><div class="source-note">Inspired by <a href="https://psnet.ahrq.gov/web-mm/treatment-challenges-after-discharge" target="_blank" rel="noopener">AHRQ PSNet, “Treatment Challenges After Discharge” ↗</a> · David is an alias. Agent interventions are simulated.</div></article>
+      </section>
+
+      <section class="view" id="view-proof" aria-label="Protocol and proof">
+        <div class="page-heading"><div><div class="eyebrow">THE CODE HAS TO EARN ITS PERMISSION</div><h1>Open the proof.</h1><p class="subheading">Change the program. Keep the requirements. See what the checker accepts.</p></div><div class="heading-actions"><button class="btn secondary" id="kernel-button"><span data-icon="code"></span>View verifier</button></div></div>
+        <article class="card generation-card"><div class="generation-copy"><div class="eyebrow">LET AI WRITE THE WORKFLOW</div><h2 class="section-title">Describe the care loop.</h2><p class="section-caption" id="generation-description">Prepared examples are always available. Checking live generation availability…</p></div><div class="generation-input"><label class="sr-only" for="generation-prompt">Instructions for the AI code generator</label><textarea id="generation-prompt" maxlength="2000" rows="3"></textarea><div class="generation-controls"><span class="tag muted" id="generator-model">Checking availability</span><button class="btn primary" id="generate-button" disabled><span data-icon="code"></span>Generate & verify</button></div></div></article>
+        <div class="notice lab-notice"><strong id="candidate-origin">Prepared candidate · editable code</strong><span>Every candidate faces the same independent specification. Generated code has no permission to change it.</span></div>
+        <div class="lab-grid">
+          <article class="card code-card"><div class="card-header"><div><h2 class="section-title">Patient-specific protocol</h2><p class="section-caption">david_c17.py · Restricted Python</p></div><span class="tag muted" id="code-state">Draft</span></div><div class="code-toolbar"><label for="candidate-select">Load a candidate</label><select class="candidate-select" id="candidate-select"><option>Loading…</option></select></div><label class="sr-only" for="code-editor">Editable patient workflow code</label><textarea class="code-editor" id="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="language-help"></textarea><div class="code-footer"><span id="language-help">Boolean conditions · ordered branches · fixed actions</span><button class="btn primary" id="verify-button"><span data-icon="shield"></span>Verify protocol</button></div></article>
+          <article class="card proof-card"><div class="card-header"><h2 class="section-title">Verification certificate</h2><span class="tag muted">Metamath-inspired</span></div><div class="card-body"><div class="proof-status" id="proof-status"><div class="verification-icon" data-icon="shield"></div><div><h3>Waiting for the checker</h3><p>Certificates are independently checked in Python.</p></div></div><div class="proof-metrics" id="proof-metrics"></div><div class="proof-steps" id="proof-steps"></div><div class="counterexample" id="counterexample" hidden></div><div class="proof-actions"><button class="btn secondary small" id="download-proof" disabled><span data-icon="download"></span>Download proof</button><button class="text-button" id="scope-button">What is guaranteed? ↗</button></div></div></article>
+        </div>
+        <article class="card semantics-card"><div class="card-header"><h2 class="section-title">One program, end to end.</h2></div><div class="semantics-flow"><div><span>01</span><strong>Separate requirements</strong><small>Fixed demo policy</small></div><i>→</i><div><span>02</span><strong>Code + certificate</strong><small>Untrusted candidate</small></div><i>→</i><div><span>03</span><strong>Independent checker</strong><small>Substitution & exact matching</small></div><i>→</i><div><span>04</span><strong>Restricted interpreter</strong><small>Same checked program model</small></div></div><div class="source-note">The interpreter and parser are part of the trusted implementation; their correctness is not proved by the certificate.</div></article>
+      </section>
+
+      <section class="view" id="view-requirements" aria-label="Independent requirements">
+        <div class="page-heading"><div><div class="eyebrow">THE REQUIREMENTS COME FIRST</div><h1>What “correct” means here.</h1><p class="subheading">A separate policy the generated program cannot edit or weaken.</p></div><span class="tag green">Demo specification · v1</span></div>
+        <div class="spec-grid" id="spec-grid"></div>
+        <article class="card specification-source"><div class="card-header"><div><h2 class="section-title">The formal specification</h2><p class="section-caption">Read-only · independent of the candidate code</p></div><span class="mono" id="spec-hash"></span></div><pre class="spec-expression" id="spec-source"></pre></article>
+        <div class="notice"><strong>Policy ownership</strong><span>These are demonstration requirements. A real deployment needs institution-approved requirements and authenticated clinical evidence.</span></div>
+      </section>
+    </main>
+    <footer class="app-footer"><span>VERIFIED CLINICAL CARE LOOP</span><span>Proof of workflow compliance · Simulation only</span></footer>
+  </div>
+  <div class="modal-overlay" id="modal-overlay" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-header"><h2 id="modal-title"></h2><button class="icon-button close-button" id="close-modal" aria-label="Close dialog">×</button></div><div class="modal-body" id="modal-body"></div></section></div>
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>
